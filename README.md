@@ -38,7 +38,7 @@ The project allows users to select between RSA and ElGamal for encryption and de
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/presensi-encryption.git
+    git clone https://github.com/NaufanZaki/Presensi-System-with-RSA-and-ElGamal-Encryption.git
     cd presensi-encryption
     ```
 
