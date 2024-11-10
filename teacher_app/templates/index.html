@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Presensi Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 18px;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .presensi-info {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .presensi-info h3 {
+            color: #555;
+            font-size: 18px;
+        }
+        .nav-button {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .nav-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Assign Class Presensi</h1>
+        <form method="POST">
+            <label for="class_name">Class Name</label>
+            <input type="text" id="class_name" name="class_name" placeholder="Enter class name" required>
+            <input type="submit" value="Generate Presensi Code">
+        </form>
+
+        {% if presensi_code %}
+        <div class="presensi-info">
+            <h3>Class: {{ class_name }}</h3>
+            <h3>Presensi Code: {{ presensi_code }}</h3>
+            <h3>Encrypted Code (RSA): {{ rsa_encrypted_code }}</h3>
+            <h3>Encrypted Code (ElGamal): {{ elgamal_encrypted_code }}</h3>
+        </div>
+        <p>RSA Encryption: Time {{ rsa_time }}s, Memory {{ rsa_memory }} bytes</p>
+        <p>ElGamal Encryption: Time {{ elgamal_time }}s, Memory {{ elgamal_memory }} bytes</p>
+        {% endif %}
+
+        <!-- Button to navigate to presensi list -->
+        <a href="/view_presensi" class="nav-button">View Presensi List</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .presensi-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 18px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .student-info {
+            font-weight: bold;
+        }
+        .class-info {
+            color: #555;
+            font-style: italic;
+        }
+        .nav-button {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .nav-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="presensi-container">
+        <h1>Presensi List</h1>
+        <ul>
+        {% for student in presensi_list %}
+            <li>
+                <span class="student-info">{{ student.name }}</span> - 
+                <span class="class-info">{{ student.class }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="/" class="nav-button">Back</a>
+    </div>
+</body>
+</html>
