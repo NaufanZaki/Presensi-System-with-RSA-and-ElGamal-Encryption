@@ -156,6 +156,7 @@ This system allows for a practical comparison of both algorithms, showing differ
 
 ### Comparison Result
 <img width="513" alt="Screenshot 2024-11-18 at 08 58 42" src="https://github.com/user-attachments/assets/86ae0e5b-74ae-43db-81e5-72d22cc0810b">
+
 ### 1. **Encryption Speed**
 - **RSA** demonstrates significantly faster encryption performance compared to **ElGamal**.
   - RSA encryption time: **0.00040793 seconds**.
