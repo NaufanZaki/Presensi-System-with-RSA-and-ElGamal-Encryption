@@ -1,5 +1,5 @@
 
-# Presensi System with RSA and ElGamal Encryption
+# Presensi System with RSA and ElGamal Encryption, comparison between RSA and ElGamal Encryption
 
 This project is a secure presensi (attendance) system utilizing both **RSA** and **ElGamal encryption** algorithms. It consists of two main components:
 - **Teacher App**: Used by the teacher to generate and encrypt presensi codes.
