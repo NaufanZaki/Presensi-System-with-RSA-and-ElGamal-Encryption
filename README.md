@@ -1,32 +1,44 @@
+# Presensi System with RSA and ElGamal Encryption
 
-# Presensi System with RSA and ElGamal Encryption, Comparison between RSA and ElGamal Encryption
-
-This project is a secure presensi (attendance) system utilizing both **RSA** and **ElGamal encryption** algorithms. It consists of two main components:
-- **Teacher App**: Used by the teacher to generate and encrypt presensi codes.
-- **Student App**: Used by students to verify their attendance using a presensi code.
-
-The project allows users to select between RSA and ElGamal for encryption and decryption, enabling a practical comparison of these two cryptographic methods.
+This project is a secure **Presensi (Attendance)** system utilizing both **RSA** and **ElGamal encryption** algorithms. It allows for a practical comparison of these cryptographic methods while providing a user-friendly interface for both teachers and students.
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Features](#features)
 - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 - [Usage](#usage)
   - [Teacher App](#teacher-app)
   - [Student App](#student-app)
-- [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
-  - [RSA](#rsa-rivest-shamir-adleman)
-  - [ElGamal](#elgamal)
-- [Comparison](#Comparison-Result)
+  - [RSA Algorithm](#rsa-algorithm)
+  - [ElGamal Algorithm](#elgamal-algorithm)
+- [Comparison Results](#comparison-results)
 - [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+
+---
+
+## Overview
+
+This system consists of two main components:
+- **Teacher App**: Allows teachers to generate and encrypt presensi codes.
+- **Student App**: Enables students to verify attendance using the encrypted presensi code.
+
+Users can select between **RSA** and **ElGamal** for encryption and decryption. The system also displays performance metrics, making it suitable for comparing both algorithms.
+
+---
 
 ## Features
 
-- **Dual Encryption Methods**: Supports both RSA and ElGamal encryption.
-- **Decryption Choice**: Students can choose the decryption type when verifying their attendance.
-- **Performance Comparison**: Displays execution time and memory usage for each encryption method in the Teacher App.
-- **Simple Web Interface**: Built with Flask and HTML for easy navigation and use.
+- **Dual Encryption Options**: Choose between RSA and ElGamal encryption for attendance codes.
+- **Decryption Flexibility**: Students can choose their preferred decryption method.
+- **Performance Metrics**: Displays encryption time and memory usage for each algorithm.
+- **Simple Web Interface**: User-friendly design built with Flask and HTML.
+
+---
 
 ## Setup
 
@@ -57,10 +69,10 @@ The project allows users to select between RSA and ElGamal for encryption and de
       ```bash
       python app.py
       ```
-    - The Teacher App should now be running on `http://localhost:5001`.
+    - Access the Teacher App at `http://localhost:5001`.
 
 4. **Start the Student App**:
-    - Open a new terminal window.
+    - Open a new terminal.
     - Navigate to the `student_app` directory:
       ```bash
       cd student_app
@@ -69,118 +81,102 @@ The project allows users to select between RSA and ElGamal for encryption and de
       ```bash
       python app.py
       ```
-    - The Student App should now be running on `http://localhost:5002`.
+    - Access the Student App at `http://localhost:5002`.
+
+---
 
 ## Usage
 
 ### Teacher App
 
 1. Open the Teacher App in your browser at `http://localhost:5001`.
-2. Enter the class name and click "Generate Presensi Code".
-3. The app will generate a presensi code and display:
-   - The original presensi code.
-   - Encrypted codes using both RSA and ElGamal.
-   - Performance metrics (execution time and memory usage) for each encryption method.
+2. Enter the **class name** and click **"Generate Presensi Code"**.
+3. The app will generate:
+   - Original presensi code.
+   - Encrypted codes (RSA and ElGamal).
+   - Performance metrics (execution time and memory usage).
 
-4. Students can now use the Student App to verify their attendance with the generated code.
+4. Share the presensi code with students for verification.
 
 ### Student App
 
 1. Open the Student App in your browser at `http://localhost:5002`.
-2. Log in by entering your name.
-3. Enter the presensi code provided by the teacher.
-4. Select the **Decryption Type** (RSA or ElGamal) to use for verification.
-5. Click "Verify".
-6. The app will display a success or error message based on whether the entered code matches the decrypted code.
+2. Log in with your name.
+3. Enter the **presensi code** provided by the teacher.
+4. Select the **Decryption Type** (RSA or ElGamal) and click **"Verify"**.
+5. The app will display a success or error message based on the verification.
 
-## Project Structure
-
-```
-presensi-encryption/
-├── teacher_app/
-│   ├── app.py                # Main Flask app for the Teacher
-│   └── templates/
-│       └── index.html        # Teacher interface for generating presensi codes
-├── student_app/
-│   ├── app.py                # Main Flask app for the Student
-│   └── templates/
-│       └── verify.html       # Student interface for verifying presensi codes
-└── README.md                 # Project documentation
-```
+---
 
 ## How It Works
 
-This project leverages two encryption methods, **RSA** and **ElGamal**, for securely verifying student attendance. Here’s a detailed breakdown of each encryption method:
-
-### RSA (Rivest-Shamir-Adleman)
+### RSA Algorithm
 
 1. **Key Generation**:
-   - RSA uses two large prime numbers, \( p \) and \( q \), to generate:
+   - Uses two large prime numbers to compute:
      - \( n = p \times q \)
      - \( \phi(n) = (p - 1) \times (q - 1) \)
-   - An **encryption exponent** \( e \) is chosen, and the **decryption exponent** \( d \) is computed so that \( d \times e \equiv 1 \ (	ext{mod} \ \phi(n)) \).
-   - The **public key** is \((e, n)\) and the **private key** is \((d, n)\).
+   - Public key: \((e, n)\), Private key: \((d, n)\).
 
 2. **Encryption**:
-   - The Teacher App encrypts each character in the presensi code by raising its ASCII value to the power of \( e \) modulo \( n \):
+   - Converts each character in the presensi code to an encrypted value:
      \[
-     	ext{encrypted\_char} = (	ext{ASCII\_value})^e \mod n
+     \text{encrypted\_char} = (\text{ASCII\_value})^e \mod n
      \]
 
 3. **Decryption**:
-   - The Student App decrypts each encrypted character using the private key \( (d, n) \):
+   - Restores the original code:
      \[
-     	ext{decrypted\_char} = (	ext{encrypted\_char})^d \mod n
+     \text{decrypted\_char} = (\text{encrypted\_char})^d \mod n
      \]
-   - The decrypted ASCII values are converted back to the original presensi code for verification.
 
-### ElGamal
+### ElGamal Algorithm
 
 1. **Key Generation**:
-   - The Teacher App selects a large **prime number** \( p \), a **generator** \( g \), and a random **private key** \( x \).
-   - The **public key** is calculated as \( h = g^x \mod p \), with \((g, h, p)\) as the public key and \( x \) as the private key.
+   - Uses a prime \( p \), generator \( g \), and private key \( x \).
+   - Public key: \((g, h, p)\), where \( h = g^x \mod p \).
 
 2. **Encryption**:
-   - For each character in the presensi code, a random integer \( k \) is selected as a session key.
-   - Each character is encrypted into a pair \((c1, c2)\):
-     - \( c1 = g^k \mod p \)
-     - \( c2 = (	ext{ASCII\_value} \times h^k) \mod p \)
+   - Each character is encrypted as a pair:
+     \[
+     c1 = g^k \mod p,\ c2 = (\text{ASCII\_value} \times h^k) \mod p
+     \]
 
 3. **Decryption**:
-   - The Student App decrypts each character pair \((c1, c2)\) using the private key \( x \):
+   - Recovers the original value:
      \[
-     	ext{ASCII\_value} = (c2 \times c1^{(p - 1 - x)}) \mod p
+     \text{ASCII\_value} = (c2 \times c1^{(p - 1 - x)}) \mod p
      \]
-   - The decrypted values are converted back to characters to reconstruct the original presensi code.
 
-This system allows for a practical comparison of both algorithms, showing differences in execution time and memory usage.
+---
 
-### Comparison Result
-<img width="512" alt="Screenshot 2024-11-18 at 09 20 01" src="https://github.com/user-attachments/assets/11d22d98-7a7e-4b0b-9699-66899e549993">
+## Comparison Results
 
+### Encryption Speed
+- **RSA**: **0.00011897 seconds**
+- **ElGamal**: **0.00013113 seconds**
 
-The results of the comparison between the ElGamal and RSA algorithms on the attendance website are as follows:
+### Memory Usage
+- **RSA**: **80 bytes**
+- **ElGamal**: **112 bytes**
 
-### 1. **Encryption Speed**
-- **RSA** encryption time: **0.00011897 seconds**.
-- **ElGamal** encryption time: **0.00013113 seconds**.
-- RSA is faster than ElGamal in this test, though the difference is minimal.
-
-### 2. **Memory Usage**
-- **RSA** uses **80 bytes** of memory.
-- **ElGamal** requires **112 bytes** of memory.
-- RSA demonstrates better efficiency in memory usage compared to ElGamal.
-
-### 3. **Encryption Output**
-- **RSA** produces encrypted output as a one-dimensional array, e.g., `[368, 624, 1794, 624]`.
-- **ElGamal** generates encrypted output in a more complex format, e.g., `(221, [479, 271, 486, 271])`.
+### Encrypted Outputs
+- **RSA**: `[368, 624, 1794, 624]`
+- **ElGamal**: `(221, [479, 271, 486, 271])`
 
 ### Conclusion
-- **RSA** is faster and more resource-efficient than ElGamal, making it a suitable choice for applications like an attendance system that requires quick encryption and minimal resource usage.
-- **ElGamal**, while offering different security properties, is less efficient in both speed and memory consumption in this scenario.
+- **RSA** is faster and more memory-efficient than ElGamal, making it more practical for real-time applications like attendance systems.
+- **ElGamal** offers more complex encryption but is less efficient in performance.
+
+---
+
 ## Technologies Used
 
 - **Python**: Programming language
 - **Flask**: Web framework
 - **Requests**: Library for HTTP requests
 - **HTML/CSS**: Frontend structure and styling
+
+---
+
+## Project Structure
