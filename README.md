@@ -156,27 +156,28 @@ This project leverages two encryption methods, **RSA** and **ElGamal**, for secu
 This system allows for a practical comparison of both algorithms, showing differences in execution time and memory usage.
 
 ### Comparison Result
-<img width="513" alt="Screenshot 2024-11-18 at 08 58 42" src="https://github.com/user-attachments/assets/86ae0e5b-74ae-43db-81e5-72d22cc0810b">
+<img width="512" alt="Screenshot 2024-11-18 at 09 20 01" src="https://github.com/user-attachments/assets/11d22d98-7a7e-4b0b-9699-66899e549993">
+
+
+The results of the comparison between the ElGamal and RSA algorithms on the attendance website are as follows:
 
 ### 1. **Encryption Speed**
-- **RSA** demonstrates significantly faster encryption performance compared to **ElGamal**.
-  - RSA encryption time: **0.00040793 seconds**.
-  - ElGamal encryption time: **6.008 seconds**.
-- This highlights RSA's efficiency in encryption speed over ElGamal.
+- **RSA** encryption time: **0.00011897 seconds**.
+- **ElGamal** encryption time: **0.00013113 seconds**.
+- RSA is faster than ElGamal in this test, though the difference is minimal.
 
 ### 2. **Memory Usage**
-- RSA uses less memory (**80 bytes**) compared to ElGamal, which requires **136 bytes**.
-- This indicates that RSA is more resource-efficient than ElGamal.
+- **RSA** uses **80 bytes** of memory.
+- **ElGamal** requires **112 bytes** of memory.
+- RSA demonstrates better efficiency in memory usage compared to ElGamal.
 
 ### 3. **Encryption Output**
-- RSA generates encrypted outputs as a one-dimensional array, e.g., `[1802, 1794, 538, 529]`.
-- ElGamal produces encrypted outputs in the form of pairs `(k, [c1, c2, c3, ...])`, which are more complex than RSA.
+- **RSA** produces encrypted output as a one-dimensional array, e.g., `[368, 624, 1794, 624]`.
+- **ElGamal** generates encrypted output in a more complex format, e.g., `(221, [479, 271, 486, 271])`.
 
-### General Conclusion
-- **RSA** is more suitable for applications requiring high performance and limited resources, such as this attendance website.
-- While ElGamal provides enhanced security against certain types of attacks, it is less efficient in terms of speed and memory usage.
-- The choice of algorithm depends on the application's requirements, but for an attendance website where fast encryption is essential, RSA is the more practical choice.
-
+### Conclusion
+- **RSA** is faster and more resource-efficient than ElGamal, making it a suitable choice for applications like an attendance system that requires quick encryption and minimal resource usage.
+- **ElGamal**, while offering different security properties, is less efficient in both speed and memory consumption in this scenario.
 ## Technologies Used
 
 - **Python**: Programming language
