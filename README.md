@@ -182,3 +182,14 @@ Users can select between **RSA** and **ElGamal** for encryption and decryption. 
 ---
 
 ## Project Structure
+
+presensi-encryption/
+├── teacher_app/
+│   ├── app.py                # Main Flask app for the Teacher
+│   └── templates/
+│       └── index.html        # Teacher interface for generating presensi codes
+├── student_app/
+│   ├── app.py                # Main Flask app for the Student
+│   └── templates/
+│       └── verify.html       # Student interface for verifying presensi codes
+└── README.md                 # Project documentation
