@@ -158,6 +158,18 @@ Users can select between **RSA** and **ElGamal** for encryption and decryption. 
 - **RSA**: **0.00011897 seconds**
 - **ElGamal**: **0.00013113 seconds**
 
+## Comparison Results
+
+| Metric           | RSA                   | ElGamal                |
+|-------------------|-----------------------|------------------------|
+| **Encryption Time** | 0.00011897 seconds    | 0.00013113 seconds     |
+| **Memory Usage**    | 80 bytes             | 112 bytes              |
+| **Output Example**  | `[368, 624, 1794, 624]` | `(221, [479, 271, 486, 271])` |
+
+**RSA is faster and more memory-efficient, making it a better choice for real-time applications.**
+
+---
+
 ### Memory Usage
 - **RSA**: **80 bytes**
 - **ElGamal**: **112 bytes**
@@ -181,8 +193,10 @@ Users can select between **RSA** and **ElGamal** for encryption and decryption. 
 
 ---
 
-## Project Structure
+```
 
+<details>
+<summary><strong>Project Structure</strong></summary>
 presensi-encryption/
 ├── teacher_app/
 │   ├── app.py                # Main Flask app for the Teacher
@@ -193,3 +207,6 @@ presensi-encryption/
 │   └── templates/
 │       └── verify.html       # Student interface for verifying presensi codes
 └── README.md                 # Project documentation
+</details>
+
+```
