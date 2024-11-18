@@ -152,6 +152,8 @@ Users can select between **RSA** and **ElGamal** for encryption and decryption. 
 
 ## Comparison Results
 
+<img width="512" alt="Screenshot 2024-11-18 at 09 20 01" src="https://github.com/user-attachments/assets/d5c7d891-7ffd-4deb-b50c-daf271073d14">
+
 ### Encryption Speed
 - **RSA**: **0.00011897 seconds**
 - **ElGamal**: **0.00013113 seconds**
