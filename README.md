@@ -18,6 +18,7 @@ The project allows users to select between RSA and ElGamal for encryption and de
 - [How It Works](#how-it-works)
   - [RSA](#rsa-rivest-shamir-adleman)
   - [ElGamal](#elgamal)
+- [Comparison](#Comparison-Result)
 - [Technologies Used](#technologies-used)
 
 ## Features
